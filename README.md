@@ -4,6 +4,9 @@ Un proyecto de Flutter para explorar y utilizar diferentes librerías de gráfic
 
 # Arquitectura MVVM
 - lib
+  - assets
+    - json
+      - videojuegos.json
   - data 
     - Service
     - Model
