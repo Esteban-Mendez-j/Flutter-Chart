@@ -36,6 +36,9 @@ VideoJuego _$VideoJuegoFromJson(Map<String, dynamic> json) => VideoJuego(
   dificultad: json['dificultad'] as String,
   tipoCamara: json['tipo_camara'] as String,
   esMundoAbierto: json['es_mundo_abierto'] as bool,
+  historialMensual: (json['historial_mensual'] as List<dynamic>)
+      .map((e) => HistorialMensual.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$VideoJuegoToJson(VideoJuego instance) =>
@@ -65,4 +68,5 @@ Map<String, dynamic> _$VideoJuegoToJson(VideoJuego instance) =>
       'dificultad': instance.dificultad,
       'tipo_camara': instance.tipoCamara,
       'es_mundo_abierto': instance.esMundoAbierto,
+      'historial_mensual': instance.historialMensual,
     };

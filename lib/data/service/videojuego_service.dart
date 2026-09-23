@@ -15,7 +15,7 @@ class VideojuegoService {
 
       return jsonData.map((json) => VideoJuego.fromJson(json)).toList();
     } catch (e) {
-      log("Error al obtener los videojuegos");
+      log("Error al obtener los videojuegos: $e");
       throw Exception(e.toString());
     }
   }

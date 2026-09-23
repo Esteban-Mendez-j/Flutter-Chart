@@ -1,3 +1,4 @@
+import 'package:graficos/data/model/historial_mensual.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'videojuego.g.dart';
@@ -30,6 +31,7 @@ class VideoJuego {
   String dificultad;
   String tipoCamara;
   bool esMundoAbierto;
+  List<HistorialMensual> historialMensual;
 
   VideoJuego({
     required this.id,
@@ -57,6 +59,7 @@ class VideoJuego {
     required this.dificultad,
     required this.tipoCamara,
     required this.esMundoAbierto,
+    required this.historialMensual,
   });
 
   factory VideoJuego.fromJson(Map<String, dynamic> json) =>
