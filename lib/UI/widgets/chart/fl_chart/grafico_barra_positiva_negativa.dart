@@ -2,24 +2,19 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:graficos/data/model/videojuego.dart';
 
-class GraficoBarras extends StatelessWidget {
+class GraficoBarraPositivasNegativas extends StatelessWidget {
   final List<VideoJuego> videoJuegos;
 
-  const GraficoBarras({super.key, required this.videoJuegos});
-
-  String nombreCorto(String nombre) {
-    if (nombre.length <= 10) {
-      return nombre;
-    }
-    return '${nombre.substring(0, 10)}...';
-  }
+  const GraficoBarraPositivasNegativas({super.key, required this.videoJuegos});
 
   @override
   Widget build(BuildContext context) {
+    final juegos = videoJuegos.take(6).toList();
+
     return Column(
       children: [
         const Text(
-          'Calificación y Puntaje por Videojuego',
+          'Balance Neto de Satisfacción de Usuarios (%)',
           style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
@@ -27,21 +22,8 @@ class GraficoBarras extends StatelessWidget {
         Expanded(
           child: BarChart(
             BarChartData(
-              maxY: 10,
-              barTouchData: BarTouchData(
-                enabled: true,
-                touchTooltipData: BarTouchTooltipData(
-                  getTooltipItem: (group, groupIndex, rod, rodIndex) {
-                    final juego = videoJuegos[group.x.toInt()];
-
-                    return BarTooltipItem(
-                      '${juego.nombre}\n',
-                      const TextStyle(fontWeight: FontWeight.bold),
-                      children: [TextSpan(text: 'Puntaje: ${juego.puntaje}')],
-                    );
-                  },
-                ),
-              ),
+              minY: -100,
+              maxY: 100,
               gridData: const FlGridData(show: true),
               titlesData: FlTitlesData(
                 topTitles: const AxisTitles(
@@ -52,11 +34,11 @@ class GraficoBarras extends StatelessWidget {
                 ),
                 leftTitles: const AxisTitles(
                   axisNameWidget: Text(
-                    'Puntaje (0 - 10)',
+                    'Balance Neto (%)',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11),
                   ),
                   axisNameSize: 22,
-                  sideTitles: SideTitles(showTitles: true, reservedSize: 35),
+                  sideTitles: SideTitles(showTitles: true, reservedSize: 40),
                 ),
                 bottomTitles: AxisTitles(
                   axisNameWidget: const Text(
@@ -69,23 +51,40 @@ class GraficoBarras extends StatelessWidget {
                     getTitlesWidget: (value, meta) {
                       final index = value.toInt();
 
-                      if (index < 0 || index >= videoJuegos.length) {
+                      if (index < 0 || index >= juegos.length) {
                         return const SizedBox();
                       }
 
                       return Text(
-                        nombreCorto(videoJuegos[index].nombre),
-                        style: const TextStyle(fontSize: 11),
+                        juegos[index].nombre.substring(
+                          0,
+                          juegos[index].nombre.length > 8
+                              ? 8
+                              : juegos[index].nombre.length,
+                        ),
+                        style: const TextStyle(fontSize: 9),
                       );
                     },
                   ),
                 ),
               ),
-              barGroups: List.generate(videoJuegos.length, (index) {
+              barGroups: List.generate(juegos.length, (index) {
+                final juego = juegos[index];
+                final total = juego.valoracionesPositivas + juego.valoracionesNegativas;
+                final balanceNeto = total > 0
+                    ? ((juego.valoracionesPositivas - juego.valoracionesNegativas) / total) * 100
+                    : 0.0;
+
                 return BarChartGroupData(
                   x: index,
                   barRods: [
-                    BarChartRodData(toY: videoJuegos[index].puntaje, width: 22),
+                    BarChartRodData(
+                      fromY: 0,
+                      toY: balanceNeto,
+                      width: 22,
+                      color: balanceNeto >= 0 ? Colors.green.shade600 : Colors.redAccent,
+                      borderRadius: BorderRadius.circular(3),
+                    ),
                   ],
                 );
               }),
