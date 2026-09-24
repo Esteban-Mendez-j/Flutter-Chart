@@ -131,9 +131,7 @@ List<Widget> _listaGraficos({required FlChartViewModel viewModel}) {
     GraficoVelas(videoJuegos: games),
     GraficoBarraPositivasNegativas(videoJuegos: games),
     GraficoAreaEntreLineas(videoJuegos: games),
-    GraficoLineaError(
-      videoJuegos: viewModel.top5PorPuntaje,
-    ), //TODO: Si no usamos top 5 los valores de y se alteran
+    GraficoLineaError(videoJuegos: games),
     GraficoLineasEscalonadas(videoJuegos: games),
     GraficoLineasMultiples(videoJuegos: games),
     GraficoBurbujas(videoJuegos: games),

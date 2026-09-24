@@ -9,7 +9,7 @@ class GraficoLineaError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final juego = videoJuegos.first;
+    final juego = videoJuegos[4];
 
     const meses = [
       'Ene',
@@ -68,7 +68,7 @@ class GraficoLineaError extends StatelessWidget {
                   sideTitles: SideTitles(
                     showTitles: true,
                     reservedSize: 45,
-                    interval: 3,
+                    interval: 10,
                   ),
                 ),
                 bottomTitles: AxisTitles(
