@@ -13,11 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Graficos en Flutter',
-      theme: ThemeData(
-        colorScheme: .fromSeed(
-          seedColor: const Color.fromARGB(255, 83, 17, 198),
-        ),
-      ),
+      theme: ThemeData(brightness: Brightness.dark),
       home: MainView(),
     );
   }

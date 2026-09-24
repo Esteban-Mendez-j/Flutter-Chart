@@ -15,6 +15,9 @@ HistorialMensual _$HistorialMensualFromJson(Map<String, dynamic> json) =>
       valoracionesPositivas: (json['valoraciones_positivas'] as num).toInt(),
       valoracionesNegativas: (json['valoraciones_negativas'] as num).toInt(),
       ingresos: (json['ingresos'] as num).toDouble(),
+      ventasOhlc: VentasOhlc.fromJson(
+        json['ventas_ohlc'] as Map<String, dynamic>,
+      ),
     );
 
 Map<String, dynamic> _$HistorialMensualToJson(HistorialMensual instance) =>
@@ -26,4 +29,5 @@ Map<String, dynamic> _$HistorialMensualToJson(HistorialMensual instance) =>
       'valoraciones_positivas': instance.valoracionesPositivas,
       'valoraciones_negativas': instance.valoracionesNegativas,
       'ingresos': instance.ingresos,
+      'ventas_ohlc': instance.ventasOhlc,
     };
