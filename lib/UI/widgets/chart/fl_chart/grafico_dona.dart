@@ -2,17 +2,17 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:graficos/data/model/videojuego.dart';
 
-class GraficoCircular extends StatelessWidget {
+class GraficoDona extends StatelessWidget {
   final List<VideoJuego> videoJuegos;
 
-  const GraficoCircular({super.key, required this.videoJuegos});
+  const GraficoDona({super.key, required this.videoJuegos});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         const Text(
-          'Distribución de Horas Jugadas Mensuales (Pie)',
+          'Cuota de Mercado por Ingresos Estimados (Dona)',
           style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
@@ -45,18 +45,18 @@ class GraficoCircular extends StatelessWidget {
         Expanded(
           child: PieChart(
             PieChartData(
-              sectionsSpace: 1,
-              centerSpaceRadius: 0,
+              sectionsSpace: 3,
+              centerSpaceRadius: 35,
               sections: List.generate(videoJuegos.length, (index) {
                 final game = videoJuegos[index];
                 final color = Colors.primaries[index % Colors.primaries.length];
-                final horasB = game.horasJugadasMensuales / 1000000000;
+                final ingresosB = game.ingresosEstimados / 1000000000;
 
                 return PieChartSectionData(
-                  value: horasB > 0 ? horasB : 1.0,
-                  title: '${horasB.toStringAsFixed(1)}B h',
+                  value: ingresosB > 0 ? ingresosB : 1.0,
+                  title: '\$${ingresosB.toStringAsFixed(1)}B',
                   color: color,
-                  radius: 95,
+                  radius: 65,
                   titleStyle: const TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
