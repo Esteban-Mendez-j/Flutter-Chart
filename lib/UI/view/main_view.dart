@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graficos/UI/view/fl_chart_view.dart';
+import 'package:graficos/UI/view/syncfusion_view.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -11,7 +12,7 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   int _indiceActual = 0;
 
-  final List<Widget> _vistas = [const FlChartView(), const FlChartView()];
+  final List<Widget> _vistas = [const FlChartView(), const SyncfusionView()];
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class _MainViewState extends State<MainView> {
           NavigationDestination(
             icon: Icon(Icons.search_outlined),
             selectedIcon: Icon(Icons.search, color: Colors.white),
-            label: 'chart',
+            label: 'Syncfusion',
           ),
         ],
       ),
