@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graficos/UI/view/fl_chart_view.dart';
+import 'package:graficos/UI/view/home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           seedColor: const Color.fromARGB(255, 83, 17, 198),
         ),
       ),
-      home: FlChartView(),
+      home: const HomeView(),
     );
   }
 }
