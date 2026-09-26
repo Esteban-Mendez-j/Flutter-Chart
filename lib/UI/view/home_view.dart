@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graficos/UI/view/fl_chart_view.dart';
 import 'package:graficos/UI/view/graphics_view.dart';
-import 'package:graficos/UI/view/syncfusionview.dart';
+import 'package:graficos/UI/view/syncfusion_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -16,7 +16,7 @@ class _HomeViewState extends State<HomeView> {
   final List<Widget> _pantallas = [
     const FlChartView(),
     const GraphicView(),
-    const SyncfusionView(), 
+    const SyncfusionView(),
   ];
 
   void _onItemTapped(int index) {

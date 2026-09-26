@@ -21,7 +21,7 @@ class SfG6AreaSuave extends StatelessWidget {
           dataSource: data,
           xValueMapper: (_AreaData data, _) => data.x,
           yValueMapper: (_AreaData data, _) => data.y,
-          color: Colors.blueAccent.withOpacity(0.4),
+          color: Colors.blueAccent,
           borderColor: Colors.blue,
           borderWidth: 2,
         ),
