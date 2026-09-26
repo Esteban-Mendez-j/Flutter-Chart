@@ -14,6 +14,13 @@ import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_velas.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_area_rango.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_embudo.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_columnas_100.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g1_linea.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g2_columna.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g3_pie.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g4_dona.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g5_radial.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g6_area_suave.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g7_piramide.dart';
 
 class SyncfusionView extends StatefulWidget {
   const SyncfusionView({super.key});
@@ -114,5 +121,12 @@ List<Widget> _listaGraficos({required FlChartViewModel viewModel}) {
     GraficoAreaRango(videoJuegos: games),
     GraficoEmbudo(videoJuegos: games),
     GraficoColumnas100(videoJuegos: games),
+    SfG1Linea(),
+    SfG2Columna(),
+    SfG3Pie(),
+    SfG4Dona(),
+    SfG5Radial(),
+    SfG6AreaSuave(),
+    SfG7Piramide(),
   ];
 }

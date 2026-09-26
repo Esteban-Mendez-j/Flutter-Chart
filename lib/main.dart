@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graficos/UI/view/main_view.dart';
+import 'package:graficos/UI/view/home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Graficos en Flutter',
       theme: ThemeData(brightness: Brightness.dark),
-      home: MainView(),
+      home: HomeView(),
     );
   }
 }
