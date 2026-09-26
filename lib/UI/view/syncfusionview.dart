@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:graficos/UI/widgets/chart/sfc/sf_g1_linea.dart';
-import 'package:graficos/UI/widgets/chart/sfc/sf_g2_columna.dart';
-import 'package:graficos/UI/widgets/chart/sfc/sf_g3_pie.dart';
-import 'package:graficos/UI/widgets/chart/sfc/sf_g4_dona.dart';
-import 'package:graficos/UI/widgets/chart/sfc/sf_g5_radial.dart';
-import 'package:graficos/UI/widgets/chart/sfc/sf_g6_area_suave.dart';
-import 'package:graficos/UI/widgets/chart/sfc/sf_g7_piramide.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g1_linea.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g2_columna.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g3_pie.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g4_dona.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g5_radial.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g6_area_suave.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g7_piramide.dart';
 
 class SyncfusionView extends StatefulWidget {
   const SyncfusionView({super.key});
@@ -59,7 +59,10 @@ class _SyncfusionViewState extends State<SyncfusionView> {
                       children: [
                         Text(
                           item['titulo'],
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
                         ),
                         const SizedBox(height: 10),
                         Expanded(child: item['widget'] as Widget),
