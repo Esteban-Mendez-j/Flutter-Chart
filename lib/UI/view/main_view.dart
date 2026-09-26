@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graficos/UI/view/community_charts_view.dart';
 import 'package:graficos/UI/view/fl_chart_view.dart';
 import 'package:graficos/UI/view/syncfusion_view.dart';
 
@@ -12,7 +13,11 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   int _indiceActual = 0;
 
-  final List<Widget> _vistas = [const FlChartView(), const SyncfusionView()];
+  final List<Widget> _vistas = [
+    const FlChartView(),
+    const SyncfusionView(),
+    const CommunityChartsView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +58,11 @@ class _MainViewState extends State<MainView> {
             icon: Icon(Icons.search_outlined),
             selectedIcon: Icon(Icons.search, color: Colors.white),
             label: 'Syncfusion',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.bar_chart_outlined),
+            selectedIcon: Icon(Icons.bar_chart, color: Colors.white),
+            label: 'Community',
           ),
         ],
       ),

@@ -7,6 +7,13 @@ import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_burbuja.dart
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_caja_bigote.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_dispersion.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_histograma.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_barra_horizontal.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_linea_escalonada.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_columnas_apiladas.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_velas.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_area_rango.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_embudo.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_columnas_100.dart';
 
 class SyncfusionView extends StatefulWidget {
   const SyncfusionView({super.key});
@@ -100,5 +107,12 @@ List<Widget> _listaGraficos({required FlChartViewModel viewModel}) {
     GraficoCascada(videoJuegos: games),
     GraficoDispersion(videoJuegos: games),
     GraficoHistograma(videoJuegos: games),
+    GraficoBarraHorizontal(videoJuegos: games),
+    GraficoLineaEscalonada(videoJuegos: games),
+    GraficoColumnasApiladas(videoJuegos: games),
+    GraficoVelas(videoJuegos: games),
+    GraficoAreaRango(videoJuegos: games),
+    GraficoEmbudo(videoJuegos: games),
+    GraficoColumnas100(videoJuegos: games),
   ];
 }
