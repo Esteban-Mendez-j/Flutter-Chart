@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graficos/UI/view_model/fl_chart_view_model.dart';
+import 'package:graficos/UI/view_model/graficos_view_model.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_cascada.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_barra_error.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_barras_intervalo.dart';
@@ -30,11 +30,11 @@ class SyncfusionView extends StatefulWidget {
 }
 
 class _SyncfusionView extends State<SyncfusionView> {
-  late FlChartViewModel _viewModel;
+  late GraficosViewModel _viewModel;
   @override
   void initState() {
     super.initState();
-    _viewModel = FlChartViewModel();
+    _viewModel = GraficosViewModel();
     _viewModel.getVideoJuegos();
   }
 
@@ -104,7 +104,7 @@ class _SyncfusionView extends State<SyncfusionView> {
   }
 }
 
-List<Widget> _listaGraficos({required FlChartViewModel viewModel}) {
+List<Widget> _listaGraficos({required GraficosViewModel viewModel}) {
   final games = viewModel.videoJuegos;
   return [
     GraficoBarraError(videoJuegos: games),
