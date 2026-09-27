@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graficos/UI/view_model/fl_chart_view_model.dart';
+import 'package:graficos/UI/view_model/graficos_view_model.dart';
 import 'package:graficos/UI/widgets/chart/community_charts/grafico_barra_chispa.dart';
 import 'package:graficos/UI/widgets/chart/community_charts/grafico_barra_horizontal.dart';
 import 'package:graficos/UI/widgets/chart/community_charts/grafico_barra_horizontal_etiquetas.dart';
@@ -29,12 +29,12 @@ class CommunityChartsView extends StatefulWidget {
 }
 
 class _CommunityChartsView extends State<CommunityChartsView> {
-  late FlChartViewModel _viewModel;
+  late GraficosViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _viewModel = FlChartViewModel();
+    _viewModel = GraficosViewModel();
     _viewModel.getVideoJuegos();
   }
 
@@ -108,10 +108,7 @@ class _CommunityChartsView extends State<CommunityChartsView> {
   }
 }
 
-/// Arma la lista con los 20 gráficos pedidos para community_charts_flutter.
-/// [games] es la lista completa de videojuegos; [fiveGame] son los primeros
-/// 5, usados en los gráficos donde mostrar los 20 juegos sería ilegible.
-List<Widget> _listaGraficos({required FlChartViewModel viewModel}) {
+List<Widget> _listaGraficos({required GraficosViewModel viewModel}) {
   final games = viewModel.videoJuegos;
   final fiveGame = viewModel.videoJuegos.take(5).toList();
   final eightGame = viewModel.videoJuegos.take(8).toList();

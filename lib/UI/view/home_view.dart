@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graficos/UI/view/community_charts_view.dart';
 import 'package:graficos/UI/view/fl_chart_view.dart';
 import 'package:graficos/UI/view/graphics_view.dart';
 import 'package:graficos/UI/view/syncfusion_view.dart';
@@ -17,6 +18,7 @@ class _HomeViewState extends State<HomeView> {
     const FlChartView(),
     const GraphicView(),
     const SyncfusionView(),
+    const CommunityChartsView(),
   ];
 
   void _onItemTapped(int index) {
@@ -40,8 +42,12 @@ class _HomeViewState extends State<HomeView> {
             label: 'Graphic',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.pie_chart_outline),
+            icon: Icon(Icons.data_saver_off_rounded),
             label: 'Syncfusion',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.insert_chart),
+            label: 'Community Chart',
           ),
         ],
         currentIndex: _selectedIndex,
