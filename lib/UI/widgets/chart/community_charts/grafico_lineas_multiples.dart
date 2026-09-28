@@ -26,7 +26,7 @@ class GraficoLineasMultiples extends StatelessWidget {
         domainFn: (HistorialMensual h, index) => index ?? 0,
         measureFn: (HistorialMensual h, _) => h.jugadoresActivos,
         data: juego.historialMensual,
-        colorFn: (_, __) => colores[i],
+        colorFn: (_, _) => colores[i],
       );
     });
   }
@@ -53,12 +53,12 @@ class GraficoLineasMultiples extends StatelessWidget {
             animate: true,
             behaviors: [charts.SeriesLegend()],
             domainAxis: charts.NumericAxisSpec(
-              tickFormatterSpec: charts.BasicNumericTickFormatterSpec(
-                (num? value) {
-                  final i = value?.toInt() ?? 0;
-                  return (i >= 0 && i < periodos.length) ? periodos[i] : '';
-                },
-              ),
+              tickFormatterSpec: charts.BasicNumericTickFormatterSpec((
+                num? value,
+              ) {
+                final i = value?.toInt() ?? 0;
+                return (i >= 0 && i < periodos.length) ? periodos[i] : '';
+              }),
             ),
           ),
         ),

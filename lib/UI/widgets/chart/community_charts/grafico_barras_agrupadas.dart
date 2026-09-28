@@ -16,14 +16,14 @@ class GraficoBarrasAgrupadas extends StatelessWidget {
         domainFn: (VideoJuego juego, _) => juego.nombre,
         measureFn: (VideoJuego juego, _) => juego.valoracionesPositivas,
         data: videoJuegos,
-        colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.green.shadeDefault,
       ),
       charts.Series<VideoJuego, String>(
         id: 'Negativas',
         domainFn: (VideoJuego juego, _) => juego.nombre,
         measureFn: (VideoJuego juego, _) => juego.valoracionesNegativas,
         data: videoJuegos,
-        colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.red.shadeDefault,
       ),
     ];
   }

@@ -8,10 +8,7 @@ import 'package:graficos/data/model/videojuego.dart';
 class GraficoBarraHorizontalEtiquetas extends StatelessWidget {
   final List<VideoJuego> videoJuegos;
 
-  const GraficoBarraHorizontalEtiquetas({
-    super.key,
-    required this.videoJuegos,
-  });
+  const GraficoBarraHorizontalEtiquetas({super.key, required this.videoJuegos});
 
   List<charts.Series<VideoJuego, String>> _crearSeries() {
     return [
@@ -20,7 +17,7 @@ class GraficoBarraHorizontalEtiquetas extends StatelessWidget {
         domainFn: (VideoJuego juego, _) => juego.nombre,
         measureFn: (VideoJuego juego, _) => juego.jugadoresActivos,
         data: videoJuegos,
-        colorFn: (_, __) => charts.MaterialPalette.lime.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.lime.shadeDefault,
         labelAccessorFn: (VideoJuego juego, _) =>
             '${juego.nombre}: ${(juego.jugadoresActivos / 1000000).toStringAsFixed(1)}M',
       ),

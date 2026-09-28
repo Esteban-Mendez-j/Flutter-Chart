@@ -17,7 +17,7 @@ class GraficoBarrasPatron extends StatelessWidget {
         domainFn: (VideoJuego juego, _) => juego.nombre,
         measureFn: (VideoJuego juego, _) => juego.numeroVentas / 1000000,
         data: videoJuegos,
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.blue.shadeDefault,
         fillPatternFn: (VideoJuego juego, _) => juego.numeroVentas > 50000000
             ? charts.FillPatternType.forwardHatch
             : charts.FillPatternType.solid,
@@ -35,9 +35,7 @@ class GraficoBarrasPatron extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 10),
-        Expanded(
-          child: charts.BarChart(_crearSeries(), animate: true),
-        ),
+        Expanded(child: charts.BarChart(_crearSeries(), animate: true)),
       ],
     );
   }

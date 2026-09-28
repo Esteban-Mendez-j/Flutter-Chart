@@ -40,7 +40,7 @@ class GraficoCircularParcial extends StatelessWidget {
         id: 'Puntaje sobre 10',
         domainFn: (_Segmento s, _) => s.categoria,
         measureFn: (_Segmento s, _) => s.valor,
-        colorFn: (_Segmento s, __) => s.color,
+        colorFn: (_Segmento s, _) => s.color,
         data: datos,
       ),
     ];

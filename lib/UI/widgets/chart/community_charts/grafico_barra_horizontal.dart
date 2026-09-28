@@ -16,7 +16,7 @@ class GraficoBarraHorizontal extends StatelessWidget {
         domainFn: (VideoJuego juego, _) => juego.nombre,
         measureFn: (VideoJuego juego, _) => juego.ingresosEstimados / 1000000,
         data: videoJuegos,
-        colorFn: (_, __) => charts.MaterialPalette.indigo.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.indigo.shadeDefault,
       ),
     ];
   }

@@ -25,7 +25,7 @@ class GraficoBarrasAgrupadasApiladas extends StatelessWidget {
         domainFn: (HistorialMensual h, _) => h.periodo,
         measureFn: (HistorialMensual h, _) => h.valoracionesPositivas,
         data: juegoA.historialMensual,
-        colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.green.shadeDefault,
       ),
       charts.Series<HistorialMensual, String>(
         id: '${juegoA.nombre} -',
@@ -33,7 +33,7 @@ class GraficoBarrasAgrupadasApiladas extends StatelessWidget {
         domainFn: (HistorialMensual h, _) => h.periodo,
         measureFn: (HistorialMensual h, _) => h.valoracionesNegativas,
         data: juegoA.historialMensual,
-        colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.red.shadeDefault,
       ),
       charts.Series<HistorialMensual, String>(
         id: '${juegoB.nombre} +',
@@ -41,7 +41,7 @@ class GraficoBarrasAgrupadasApiladas extends StatelessWidget {
         domainFn: (HistorialMensual h, _) => h.periodo,
         measureFn: (HistorialMensual h, _) => h.valoracionesPositivas,
         data: juegoB.historialMensual,
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.blue.shadeDefault,
       ),
       charts.Series<HistorialMensual, String>(
         id: '${juegoB.nombre} -',
@@ -49,7 +49,7 @@ class GraficoBarrasAgrupadasApiladas extends StatelessWidget {
         domainFn: (HistorialMensual h, _) => h.periodo,
         measureFn: (HistorialMensual h, _) => h.valoracionesNegativas,
         data: juegoB.historialMensual,
-        colorFn: (_, __) => charts.MaterialPalette.purple.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.purple.shadeDefault,
       ),
     ];
   }

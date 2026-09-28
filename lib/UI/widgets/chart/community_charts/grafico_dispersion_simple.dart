@@ -16,7 +16,7 @@ class GraficoDispersionSimple extends StatelessWidget {
         domainFn: (VideoJuego juego, _) => juego.precio,
         measureFn: (VideoJuego juego, _) => juego.puntaje,
         data: videoJuegos,
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.blue.shadeDefault,
       ),
     ];
   }
@@ -31,9 +31,7 @@ class GraficoDispersionSimple extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 10),
-        Expanded(
-          child: charts.ScatterPlotChart(_crearSeries(), animate: true),
-        ),
+        Expanded(child: charts.ScatterPlotChart(_crearSeries(), animate: true)),
       ],
     );
   }

@@ -22,14 +22,14 @@ class GraficoComboBarraLinea extends StatelessWidget {
         domainFn: (HistorialMensual h, _) => h.periodo,
         measureFn: (HistorialMensual h, _) => h.ventas / 1000,
         data: juego.historialMensual,
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.blue.shadeDefault,
       ),
       charts.Series<HistorialMensual, String>(
         id: 'Ingresos (M)',
         domainFn: (HistorialMensual h, _) => h.periodo,
         measureFn: (HistorialMensual h, _) => h.ingresos,
         data: juego.historialMensual,
-        colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.red.shadeDefault,
       )..setAttribute(charts.rendererIdKey, 'linea'),
     ];
   }

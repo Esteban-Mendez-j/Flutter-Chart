@@ -16,7 +16,7 @@ class GraficoBarrasSimple extends StatelessWidget {
         domainFn: (VideoJuego juego, _) => juego.nombre,
         measureFn: (VideoJuego juego, _) => juego.puntaje,
         data: videoJuegos,
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.blue.shadeDefault,
       ),
     ];
   }
@@ -31,9 +31,7 @@ class GraficoBarrasSimple extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 10),
-        Expanded(
-          child: charts.BarChart(_crearSeries(), animate: true),
-        ),
+        Expanded(child: charts.BarChart(_crearSeries(), animate: true)),
       ],
     );
   }

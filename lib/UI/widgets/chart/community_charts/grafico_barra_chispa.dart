@@ -19,7 +19,7 @@ class GraficoBarraChispa extends StatelessWidget {
         domainFn: (HistorialMensual h, _) => h.periodo,
         measureFn: (HistorialMensual h, _) => h.ventas,
         data: juego.historialMensual,
-        colorFn: (_, __) => charts.MaterialPalette.deepOrange.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.deepOrange.shadeDefault,
       ),
     ];
   }

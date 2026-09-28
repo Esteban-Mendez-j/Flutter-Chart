@@ -18,7 +18,7 @@ class GraficoLineaPuntos extends StatelessWidget {
         domainFn: (HistorialMensual h, index) => index ?? 0,
         measureFn: (HistorialMensual h, _) => h.ingresos,
         data: juego.historialMensual,
-        colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.green.shadeDefault,
       ),
     ];
   }
@@ -46,12 +46,12 @@ class GraficoLineaPuntos extends StatelessWidget {
               radiusPx: 4,
             ),
             domainAxis: charts.NumericAxisSpec(
-              tickFormatterSpec: charts.BasicNumericTickFormatterSpec(
-                (num? value) {
-                  final i = value?.toInt() ?? 0;
-                  return (i >= 0 && i < periodos.length) ? periodos[i] : '';
-                },
-              ),
+              tickFormatterSpec: charts.BasicNumericTickFormatterSpec((
+                num? value,
+              ) {
+                final i = value?.toInt() ?? 0;
+                return (i >= 0 && i < periodos.length) ? periodos[i] : '';
+              }),
             ),
           ),
         ),

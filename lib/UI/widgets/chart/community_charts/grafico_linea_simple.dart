@@ -20,7 +20,7 @@ class GraficoLineaSimple extends StatelessWidget {
         domainFn: (HistorialMensual h, index) => index ?? 0,
         measureFn: (HistorialMensual h, _) => h.jugadoresActivos,
         data: juego.historialMensual,
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.blue.shadeDefault,
       ),
     ];
   }
@@ -44,12 +44,12 @@ class GraficoLineaSimple extends StatelessWidget {
             _crearSeries(),
             animate: true,
             domainAxis: charts.NumericAxisSpec(
-              tickFormatterSpec: charts.BasicNumericTickFormatterSpec(
-                (num? value) {
-                  final i = value?.toInt() ?? 0;
-                  return (i >= 0 && i < periodos.length) ? periodos[i] : '';
-                },
-              ),
+              tickFormatterSpec: charts.BasicNumericTickFormatterSpec((
+                num? value,
+              ) {
+                final i = value?.toInt() ?? 0;
+                return (i >= 0 && i < periodos.length) ? periodos[i] : '';
+              }),
             ),
           ),
         ),

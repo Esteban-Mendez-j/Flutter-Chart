@@ -41,7 +41,7 @@ class GraficoDona extends StatelessWidget {
         id: 'Valoraciones',
         domainFn: (_Segmento s, _) => s.categoria,
         measureFn: (_Segmento s, _) => s.valor,
-        colorFn: (_Segmento s, __) => s.color,
+        colorFn: (_Segmento s, _) => s.color,
         data: datos,
       ),
     ];

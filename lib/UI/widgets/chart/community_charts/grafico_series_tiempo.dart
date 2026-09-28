@@ -25,7 +25,7 @@ class GraficoSeriesTiempo extends StatelessWidget {
         domainFn: (HistorialMensual h, _) => _parsearPeriodo(h.periodo),
         measureFn: (HistorialMensual h, _) => h.ventas,
         data: juego.historialMensual,
-        colorFn: (_, __) => charts.MaterialPalette.indigo.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.indigo.shadeDefault,
       ),
     ];
   }

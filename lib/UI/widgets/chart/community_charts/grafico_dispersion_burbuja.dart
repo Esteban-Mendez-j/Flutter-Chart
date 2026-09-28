@@ -19,7 +19,7 @@ class GraficoDispersionBurbuja extends StatelessWidget {
         radiusPxFn: (VideoJuego juego, _) =>
             (juego.numeroVentas / 20000000) + 2,
         data: videoJuegos,
-        colorFn: (_, __) => charts.MaterialPalette.deepOrange.shadeDefault,
+        colorFn: (_, _) => charts.MaterialPalette.deepOrange.shadeDefault,
       ),
     ];
   }
@@ -34,9 +34,7 @@ class GraficoDispersionBurbuja extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 10),
-        Expanded(
-          child: charts.ScatterPlotChart(_crearSeries(), animate: true),
-        ),
+        Expanded(child: charts.ScatterPlotChart(_crearSeries(), animate: true)),
       ],
     );
   }
