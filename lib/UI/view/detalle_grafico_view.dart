@@ -17,14 +17,13 @@ class DetalleGraficoView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (grafico.tituloVisible)
-                Text(
-                  grafico.titulo ?? "Sin título",
-                  style: const TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                  ),
+              Text(
+                grafico.titulo ?? "Sin título",
+                style: const TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
                 ),
+              ),
 
               const SizedBox(height: 12),
 

@@ -40,7 +40,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
   return [
     GraficoItem(
       grafico: GraficoDona(videoJuegos: fiveGame),
-      titulo: null,
+      titulo: "Grafico de dona",
       categoria: "Composicion",
       descripcion: "El grafico de dona sirve para mostrar como se distribuye un total entre diferentes categorias y visualizar qué proporcion representa cada una.",
       tituloVisible: false,
@@ -48,7 +48,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoBarras(videoJuegos: fiveGame),
-      titulo: null,
+      titulo: "Grafico de barras",
       categoria: "Comparacion",
       descripcion: "El grafico de barras sirve para comparar valores entre diferentes videojuegos, categorias o grupos.",
       tituloVisible: false,
@@ -59,7 +59,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
         categorias: viewModel.categorias(fiveGame),
         videoJuegos: fiveGame,
       ),
-      titulo: null,
+      titulo: "Grafico de barras apiladas",
       categoria: "Composicion",
       descripcion: "El grafico de barras apiladas sirve para mostrar la composicion de un valor y como diferentes partes contribuyen al total.",
       tituloVisible: false,
@@ -67,7 +67,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoCircular(videoJuegos: fiveGame),
-      titulo: null,
+      titulo: "Grafico circular",
       categoria: "Distribucion",
       descripcion: "El grafico circular sirve para representar la distribucion proporcional de los datos entre diferentes categorias.",
       tituloVisible: false,
@@ -75,7 +75,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoBarraHorizontal(videoJuegos: fiveGame),
-      titulo: null,
+      titulo: "Grafico de barras horizontal",
       categoria: "Comparacion",
       descripcion: "El grafico de barras horizontal sirve para comparar valores y facilita la lectura cuando los nombres de los elementos son largos.",
       tituloVisible: false,
@@ -83,7 +83,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoMedidor(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico medidor",
       categoria: "Rendimiento",
       descripcion: "El grafico medidor sirve para mostrar el nivel de una métrica respecto a un rango o valor de referencia.",
       tituloVisible: false,
@@ -91,7 +91,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoBarrasAgrupadas(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico de barras agrupadas",
       categoria: "Comparacion",
       descripcion: "El grafico de barras agrupadas sirve para comparar diferentes valores de varios grupos dentro de una misma categoria.",
       tituloVisible: false,
@@ -99,7 +99,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoPronostico(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico de pronostico",
       categoria: "Pronostico",
       descripcion: "El grafico de pronostico sirve para representar datos historicos y estimar posibles valores futuros a partir de su comportamiento.",
       tituloVisible: false,
@@ -113,7 +113,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
           (mes) => mes.jugadoresActivos.toDouble(),
         ),
       ),
-      titulo: null,
+      titulo: "Grafico de areas",
       categoria: "Tendencia",
       descripcion: "El grafico de areas sirve para observar como cambia una variable a través del tiempo y visualizar la magnitud de esos cambios.",
       tituloVisible: false,
@@ -121,7 +121,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoRadar(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico radar",
       categoria: "Comparacion",
       descripcion: "El grafico radar sirve para comparar varias caracteristicas de uno o mas videojuegos y observar sus fortalezas y diferencias.",
       tituloVisible: false,
@@ -129,7 +129,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoDispersion(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico de dispersion",
       categoria: "Relacion",
       descripcion: "El grafico de dispersion sirve para analizar la relacion entre dos variables e identificar posibles patrones o agrupaciones en los datos.",
       tituloVisible: false,
@@ -137,7 +137,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoMedidorMultiAnillo(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico medidor de múltiples anillos",
       categoria: "Rendimiento",
       descripcion: "El grafico de múltiples anillos sirve para comparar simultaneamente el nivel alcanzado por varias métricas.",
       tituloVisible: false,
@@ -145,7 +145,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoVelas(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico de velas",
       categoria: "Variabilidad",
       descripcion: "El grafico de velas sirve para representar valores maximos, minimos, iniciales y finales dentro de diferentes periodos.",
       tituloVisible: false,
@@ -153,7 +153,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoBarraPositivasNegativas(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico de barras positivas y negativas",
       categoria: "Comparacion",
       descripcion: "El grafico de barras positivas y negativas sirve para comparar valores que se encuentran por encima o por debajo de un punto de referencia.",
       tituloVisible: false,
@@ -161,14 +161,15 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoAreaEntreLineas(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico de area entre lineas",
       categoria: "Relacion",
       descripcion: "El grafico de area entre lineas sirve para comparar dos series y visualizar las diferencias entre sus valores a través del tiempo.",
       tituloVisible: false,
     ),
+
     GraficoItem(
       grafico: GraficoLineaError(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico de linea con error",
       categoria: "Variabilidad",
       descripcion: "El grafico de linea con error sirve para representar valores junto con su margen de error o variacion estimada.",
       tituloVisible: false,
@@ -176,7 +177,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoLineasEscalonadas(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico de lineas escalonadas",
       categoria: "Tendencia",
       descripcion: "El grafico de lineas escalonadas sirve para representar cambios que ocurren por intervalos o pasos definidos.",
       tituloVisible: false,
@@ -184,7 +185,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoLineasMultiples(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico de lineas múltiples",
       categoria: "Tendencia",
       descripcion: "El grafico de lineas múltiples sirve para comparar la evolucion de varias variables a través del tiempo.",
       tituloVisible: false,
@@ -192,7 +193,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoBurbujas(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico de burbujas",
       categoria: "Relacion",
       descripcion: "El grafico de burbujas sirve para analizar la relacion entre variables utilizando el tamaño de las burbujas para representar una variable adicional.",
       tituloVisible: false,
@@ -200,7 +201,7 @@ List<GraficoItem> listaGraficosFlChart({required GraficosViewModel viewModel}) {
 
     GraficoItem(
       grafico: GraficoCascada(videoJuegos: games),
-      titulo: null,
+      titulo: "Grafico de cascada",
       categoria: "Composicion",
       descripcion: "El grafico de cascada sirve para mostrar como diferentes valores positivos y negativos contribuyen al cambio de un valor inicial hasta un valor final.",
       tituloVisible: false,
