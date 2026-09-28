@@ -1,4 +1,9 @@
 import 'package:graficos/UI/view_model/graficos_view_model.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_Spline.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_area_apilada.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_barra_apilada.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_linea_barra_horizontal.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_hilo.dart';
 import 'package:graficos/data/model/grafico_item.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_cascada.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_barra_error.dart';
@@ -187,6 +192,41 @@ List<GraficoItem> listaGraficosSyncfusion({
       titulo: "Grafico de piramide",
       categoria: "Comparacion",
       descripcion: "El grafico de piramide sirve para comparar cantidades distribuidas entre diferentes categorias o grupos, organizando los valores de manera visual para facilitar la comparacion.",
+    ),
+
+    GraficoItem(
+      grafico: const GraficoSpline(),
+      titulo: "Gráfico de spline",
+      categoria: "Tendencia",
+      descripcion: "El gráfico de spline representa la evolución de valores mediante líneas curvas, permitiendo observar tendencias y cambios entre diferentes puntos.",
+    ),
+
+    GraficoItem(
+      grafico: const GraficoLineaBarraHorizontal(),
+      titulo: "Gráfico combinado de línea y barra",
+      categoria: "Comparación",
+      descripcion: "El gráfico combinado de línea y barra permite comparar dos conjuntos de datos mediante barras y una línea, facilitando la identificación de diferencias y tendencias entre las categorías.",
+    ),
+
+    GraficoItem(
+      grafico: const GraficoBarrasApiladas(),
+      titulo: "Gráfico de barras apiladas",
+      categoria: "Comparación",
+      descripcion: "El gráfico de barras apiladas permite comparar diferentes categorías y observar cómo sus valores individuales contribuyen al total de cada grupo.",
+    ),
+
+    GraficoItem(
+      grafico: const GraficoAreaApilada(),
+      titulo: "Gráfico de área apilada",
+      categoria: "Tendencia",
+      descripcion: "El gráfico de área apilada permite visualizar la evolución de varias categorías y observar la contribución de cada una al valor total a lo largo del tiempo.",
+    ),
+
+    GraficoItem(
+      grafico: const GraficoHilo(),
+      titulo: "Gráfico de hilo",
+      categoria: "Rango",
+      descripcion: "El gráfico de hilo representa los valores máximos y mínimos de diferentes categorías, permitiendo visualizar el rango existente entre ambos valores.",
     ),
   ];
 }
