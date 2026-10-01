@@ -1,5 +1,5 @@
 import 'package:graficos/UI/view_model/graficos_view_model.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_Spline.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_spline.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_area_apilada.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_barra_apilada.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_linea_barra_horizontal.dart';
@@ -27,6 +27,10 @@ import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g5_radial.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g6_area_suave.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g7_piramide.dart';
 
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_area_escalonada.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_area_apilada_100.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_lineas_apiladas.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_hilo_apertura_cierre.dart';
 List<GraficoItem> listaGraficosSyncfusion({
   required GraficosViewModel viewModel,
 }) {
@@ -227,6 +231,33 @@ List<GraficoItem> listaGraficosSyncfusion({
       titulo: "Gráfico de hilo",
       categoria: "Rango",
       descripcion: "El gráfico de hilo representa los valores máximos y mínimos de diferentes categorías, permitiendo visualizar el rango existente entre ambos valores.",
+    ),
+    GraficoItem(
+      grafico: const GraficoAreaEscalonada(),
+      titulo: "Gráfico de área escalonada",
+      categoria: "Tendencia",
+      descripcion: "El gráfico de área escalonada mantiene el valor constante entre cambios y rellena el espacio inferior, ideal para datos que varían en saltos como precios o tarifas.",
+    ),
+
+    GraficoItem(
+      grafico: const GraficoAreaApilada100(),
+      titulo: "Gráfico de área apilada al 100%",
+      categoria: "Composición",
+      descripcion: "El gráfico de área apilada al 100% muestra cómo cambia la proporción de cada categoría respecto al total a lo largo del tiempo.",
+    ),
+
+    GraficoItem(
+      grafico: const GraficoLineasApiladas(),
+      titulo: "Gráfico de líneas apiladas",
+      categoria: "Tendencia",
+      descripcion: "El gráfico de líneas apiladas acumula las series sobre la anterior, de modo que la línea superior representa el total y cada tramo la aportación de una categoría.",
+    ),
+
+    GraficoItem(
+      grafico: const GraficoHiloAperturaCierre(),
+      titulo: "Gráfico de hilo con apertura y cierre",
+      categoria: "Rango",
+      descripcion: "El gráfico de hilo con apertura y cierre muestra el máximo y mínimo de cada periodo y marca con colores si el valor final subió o bajó respecto al inicial.",
     ),
   ];
 }

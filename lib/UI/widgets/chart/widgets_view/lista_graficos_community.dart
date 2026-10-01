@@ -20,6 +20,18 @@ import 'package:graficos/UI/widgets/chart/community_charts/grafico_linea_puntos.
 import 'package:graficos/UI/widgets/chart/community_charts/grafico_linea_simple.dart';
 import 'package:graficos/UI/widgets/chart/community_charts/grafico_lineas_multiples.dart';
 import 'package:graficos/UI/widgets/chart/community_charts/grafico_series_tiempo.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_area_simple.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_area_apilada_community.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_barras_horizontales_apiladas.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_barras_horizontales_agrupadas.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_barras_positivas_negativas.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_barras_redondeadas.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_circular_etiquetas_externas.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_barras_apiladas_porcentaje.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_linea_anotacion_rango.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_series_tiempo_seleccion.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_dispersion_tendencia.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_barras_doble_eje.dart';
 
 List<GraficoItem> listaGraficosCommunity({
   required GraficosViewModel viewModel,
@@ -193,6 +205,103 @@ List<GraficoItem> listaGraficosCommunity({
       titulo: "Grafico combinado de barras y lineas",
       categoria: "Comparacion",
       descripcion: "El grafico combinado de barras y lineas permite representar dos tipos de informacion en un mismo grafico, facilitando la comparacion entre valores y tendencias.",
+      tituloVisible: false,
+    ),
+    // --- Nuevos (12) ---
+
+    GraficoItem(
+      grafico: GraficoAreaSimple(videoJuegos: games),
+      titulo: "Grafico de area simple",
+      categoria: "Tendencia",
+      descripcion: "El grafico de area simple representa la evolucion de una variable con una linea y rellena el espacio inferior, resaltando el volumen acumulado a lo largo del tiempo.",
+      tituloVisible: false,
+    ),
+
+    GraficoItem(
+      grafico: GraficoAreaApiladaCommunity(videoJuegos: games),
+      titulo: "Grafico de area apilada",
+      categoria: "Composicion",
+      descripcion: "El grafico de area apilada superpone varias series para mostrar como cada una contribuye al total en cada periodo.",
+      tituloVisible: false,
+    ),
+
+    GraficoItem(
+      grafico: GraficoBarrasHorizontalesApiladas(videoJuegos: fiveGame),
+      titulo: "Barras horizontales apiladas",
+      categoria: "Composicion",
+      descripcion: "Las barras horizontales apiladas dividen el total de cada categoria en partes, con una lectura comoda cuando los nombres son largos.",
+      tituloVisible: false,
+    ),
+
+    GraficoItem(
+      grafico: GraficoBarrasHorizontalesAgrupadas(videoJuegos: fiveGame),
+      titulo: "Barras horizontales agrupadas",
+      categoria: "Comparacion",
+      descripcion: "Las barras horizontales agrupadas comparan varias series dentro de cada categoria, colocando las barras una junto a otra.",
+      tituloVisible: false,
+    ),
+
+    GraficoItem(
+      grafico: GraficoBarrasPositivasNegativas(videoJuegos: eightGame),
+      titulo: "Grafico de barras positivas y negativas",
+      categoria: "Comparacion",
+      descripcion: "El grafico de barras positivas y negativas muestra desviaciones respecto a una referencia, diferenciando con color los valores que quedan por encima y por debajo.",
+      tituloVisible: false,
+    ),
+
+    GraficoItem(
+      grafico: GraficoBarrasRedondeadas(videoJuegos: fiveGame),
+      titulo: "Grafico de barras redondeadas con etiquetas",
+      categoria: "Comparacion",
+      descripcion: "Este grafico usa barras con esquinas redondeadas y escribe el valor sobre cada una para leer los datos sin consultar el eje.",
+      tituloVisible: false,
+    ),
+
+    GraficoItem(
+      grafico: GraficoCircularEtiquetasExternas(videoJuegos: fiveGame),
+      titulo: "Grafico circular con etiquetas externas",
+      categoria: "Composicion",
+      descripcion: "El grafico circular con etiquetas externas coloca el nombre y el porcentaje fuera de cada porcion, evitando que el texto se amontone dentro del circulo.",
+      tituloVisible: false,
+    ),
+
+    GraficoItem(
+      grafico: GraficoBarrasApiladasPorcentaje(videoJuegos: fiveGame),
+      titulo: "Barras apiladas al 100%",
+      categoria: "Composicion",
+      descripcion: "Las barras apiladas al 100% muestran la proporcion de cada parte dentro del total, permitiendo comparar la composicion entre categorias sin importar su tamaño.",
+      tituloVisible: false,
+    ),
+
+    GraficoItem(
+      grafico: GraficoLineaAnotacionRango(videoJuegos: games),
+      titulo: "Grafico de lineas con anotacion de rango",
+      categoria: "Tendencia",
+      descripcion: "El grafico de lineas con anotacion de rango resalta con una franja sombreada un periodo de interes, como el pico de una serie.",
+      tituloVisible: false,
+    ),
+
+    GraficoItem(
+      grafico: GraficoSeriesTiempoSeleccion(videoJuegos: games),
+      titulo: "Serie de tiempo interactiva",
+      categoria: "Tendencia",
+      descripcion: "La serie de tiempo interactiva permite tocar o arrastrar sobre la linea para resaltar el punto mas cercano y consultar su valor.",
+      tituloVisible: false,
+    ),
+
+    GraficoItem(
+      grafico: GraficoDispersionTendencia(videoJuegos: games),
+      titulo: "Grafico de dispersion con linea de tendencia",
+      categoria: "Relacion",
+      descripcion: "El grafico de dispersion con linea de tendencia añade una recta de regresion que resume la direccion general de la relacion entre dos variables.",
+      tituloVisible: false,
+    ),
+
+    GraficoItem(
+      grafico: GraficoBarrasDobleEje(videoJuegos: fiveGame),
+      titulo: "Grafico de barras con doble eje",
+      categoria: "Comparacion",
+      descripcion: "El grafico de barras con doble eje compara dos medidas de escalas muy distintas usando un eje vertical a cada lado.",
       tituloVisible: false,
     ),
   ];
