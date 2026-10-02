@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:graficos/data/model/videojuego.dart';
 import 'package:graphic/graphic.dart';
 
-/// Cantidad de videojuegos lanzados por año.
-class G5AreaSimple extends StatelessWidget {
+/// Cantidad acumulada de videojuegos lanzados por año.
+/// Nota: graphic no tiene área escalonada; el área es normal y la línea
+/// superior sí es escalonada.
+class G27AreaEscalonada extends StatelessWidget {
   final List<VideoJuego> videoJuegos;
 
-  const G5AreaSimple({super.key, required this.videoJuegos});
+  const G27AreaEscalonada({super.key, required this.videoJuegos});
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +20,9 @@ class G5AreaSimple extends StatelessWidget {
     }
     final years = conteo.keys.toList()..sort();
 
+    var acumulado = 0;
     final data = <Map<String, dynamic>>[
-      for (final y in years) {'year': '$y', 'cantidad': conteo[y]!},
+      for (final y in years) {'paso': '$y', 'val': acumulado += conteo[y]!},
     ];
 
     return SizedBox(
@@ -28,13 +31,21 @@ class G5AreaSimple extends StatelessWidget {
         padding: (_) => const EdgeInsets.fromLTRB(40, 20, 20, 40),
         data: data,
         variables: {
-          'year': Variable(accessor: (Map m) => m['year'] as String),
-          'cantidad': Variable(
-            accessor: (Map m) => m['cantidad'] as num,
+          'paso': Variable(accessor: (Map m) => m['paso'] as String),
+          'val': Variable(
+            accessor: (Map m) => m['val'] as num,
             scale: LinearScale(min: 0),
           ),
         },
-        marks: [AreaMark()],
+        marks: [
+          AreaMark(
+            color: ColorEncode(value: Colors.cyan.withOpacity(0.5)),
+          ),
+          LineMark(
+            shape: ShapeEncode(value: BasicLineShape(smooth: false)),
+            color: ColorEncode(value: Colors.cyanAccent),
+          ),
+        ],
         axes: [Defaults.horizontalAxis, Defaults.verticalAxis],
       ),
     );

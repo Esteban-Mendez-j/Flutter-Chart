@@ -1,29 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:graficos/data/model/videojuego.dart';
 import 'package:graphic/graphic.dart';
 
+/// Ventas totales por año de lanzamiento (línea + puntos).
 class G10LineasPuntos extends StatelessWidget {
-  const G10LineasPuntos({super.key});
+  final List<VideoJuego> videoJuegos;
+
+  const G10LineasPuntos({super.key, required this.videoJuegos});
 
   @override
   Widget build(BuildContext context) {
-    final data = [
-      {'x': 'Sem 1', 'y': 100},
-      {'x': 'Sem 2', 'y': 130},
-      {'x': 'Sem 3', 'y': 110},
-      {'x': 'Sem 4', 'y': 170},
+    if (videoJuegos.isEmpty) return const Center(child: Text('Sin datos'));
+
+    final ventas = <int, int>{};
+    for (final j in videoJuegos) {
+      ventas[j.yearLanzamiento] =
+          (ventas[j.yearLanzamiento] ?? 0) + j.numeroVentas;
+    }
+    final years = ventas.keys.toList()..sort();
+
+    final data = <Map<String, dynamic>>[
+      for (final y in years) {'x': '$y', 'y': ventas[y]!},
     ];
 
-    return Chart(
-      data: data,
-      variables: {
-        'x': Variable(accessor: (Map map) => map['x'] as String),
-        'y': Variable(accessor: (Map map) => map['y'] as num),
-      },
-      marks: [
-        LineMark(color: ColorEncode(value: Colors.redAccent)),
-        PointMark(size: SizeEncode(value: 7), color: ColorEncode(value: Colors.redAccent)),
-      ],
-      axes: [Defaults.horizontalAxis, Defaults.verticalAxis],
+    return SizedBox(
+      height: 300,
+      child: Chart(
+        padding: (_) => const EdgeInsets.fromLTRB(60, 20, 20, 40),
+        data: data,
+        variables: {
+          'x': Variable(accessor: (Map m) => m['x'] as String),
+          'y': Variable(accessor: (Map m) => m['y'] as num),
+        },
+        marks: [
+          LineMark(color: ColorEncode(value: Colors.redAccent)),
+          PointMark(
+            size: SizeEncode(value: 7),
+            color: ColorEncode(value: Colors.redAccent),
+          ),
+        ],
+        axes: [Defaults.horizontalAxis, Defaults.verticalAxis],
+      ),
     );
   }
 }

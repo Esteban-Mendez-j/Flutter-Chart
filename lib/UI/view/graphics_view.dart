@@ -8,16 +8,17 @@ class GraphicView extends StatefulWidget {
   const GraphicView({super.key});
 
   @override
-  State<GraphicView> createState() => _GraphicViewState();
+  State<GraphicView> createState() => _GraphicView();
 }
 
-class _GraphicViewState extends State<GraphicView> {
+class _GraphicView extends State<GraphicView> {
   late GraficosViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
     _viewModel = GraficosViewModel();
+    _viewModel.getVideoJuegos();
   }
 
   @override
@@ -29,12 +30,18 @@ class _GraphicViewState extends State<GraphicView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Gráficos con Library Graphic")),
+      appBar: AppBar(
+        title: Center
+        (child: 
+        Text("Gráficos con Library Graphic", 
+        style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
+        ),
+      ),
       body: SafeArea(
         child: ListenableBuilder(
           listenable: _viewModel,
           builder: (context, _) {
-            List<GraficoItem> todosGraficos = listaGraficosGraphic();
+            List<GraficoItem> todosGraficos = listaGraficosGraphic(viewModel: _viewModel);
 
             final graficos = _viewModel.filtrarGraficos(todosGraficos);
 

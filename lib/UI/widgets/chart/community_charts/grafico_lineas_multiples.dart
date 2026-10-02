@@ -42,7 +42,7 @@ class GraficoLineasMultiples extends StatelessWidget {
     return Column(
       children: [
         const Text(
-          'Jugadores activos: comparación entre juegos',
+          'Jugadores activos: Comparacion entre juegos',
           style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),

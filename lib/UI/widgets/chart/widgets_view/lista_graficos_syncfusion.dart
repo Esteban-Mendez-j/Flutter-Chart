@@ -1,24 +1,27 @@
 import 'package:graficos/UI/view_model/graficos_view_model.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_spline.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_area_apilada.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_area_apilada_100.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_area_escalonada.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_area_rango.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_barra_apilada.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_linea_barra_horizontal.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_hilo.dart';
-import 'package:graficos/data/model/grafico_item.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_cascada.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_barra_error.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_barra_horizontal.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_barras_intervalo.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_burbuja.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_caja_bigote.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_dispersion.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_histograma.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_barra_horizontal.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_linea_escalonada.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_columnas_apiladas.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_velas.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_area_rango.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_embudo.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_cascada.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_columnas_100.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_columnas_apiladas.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_dispersion.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_embudo.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_hilo.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_hilo_apertura_cierre.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_histograma.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_linea_barra_horizontal.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_linea_escalonada.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_lineas_apiladas.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_spline.dart';
+import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_velas.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g1_linea.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g2_columna.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g3_pie.dart';
@@ -26,11 +29,7 @@ import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g4_dona.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g5_radial.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g6_area_suave.dart';
 import 'package:graficos/UI/widgets/chart/syncfusion_charts/sf_g7_piramide.dart';
-
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_area_escalonada.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_area_apilada_100.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_lineas_apiladas.dart';
-import 'package:graficos/UI/widgets/chart/syncfusion_charts/grafico_hilo_apertura_cierre.dart';
+import 'package:graficos/data/model/grafico_item.dart';
 List<GraficoItem> listaGraficosSyncfusion({
   required GraficosViewModel viewModel,
 }) {
@@ -208,14 +207,14 @@ List<GraficoItem> listaGraficosSyncfusion({
     GraficoItem(
       grafico: const GraficoLineaBarraHorizontal(),
       titulo: "Gráfico combinado de línea y barra",
-      categoria: "Comparación",
+      categoria: "Comparacion",
       descripcion: "El gráfico combinado de línea y barra permite comparar dos conjuntos de datos mediante barras y una línea, facilitando la identificación de diferencias y tendencias entre las categorías.",
     ),
 
     GraficoItem(
       grafico: const GraficoBarrasApiladas(),
       titulo: "Gráfico de barras apiladas",
-      categoria: "Comparación",
+      categoria: "Comparacion",
       descripcion: "El gráfico de barras apiladas permite comparar diferentes categorías y observar cómo sus valores individuales contribuyen al total de cada grupo.",
     ),
 

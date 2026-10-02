@@ -2,23 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:graficos/data/model/videojuego.dart';
 import 'package:graphic/graphic.dart';
 
-/// Burbujas: precio (X), puntaje (Y) y tamaño = jugadores activos.
-/// Usa los 25 videojuegos con más jugadores activos.
-class G15Burbujas extends StatelessWidget {
+/// Precio (X), puntaje (Y), tamaño = horas jugadas mensuales,
+/// color = mundo abierto / lineal. Usa los primeros 40 videojuegos.
+class G26PuntosTamanoColor extends StatelessWidget {
   final List<VideoJuego> videoJuegos;
 
-  const G15Burbujas({super.key, required this.videoJuegos});
+  const G26PuntosTamanoColor({super.key, required this.videoJuegos});
 
   @override
   Widget build(BuildContext context) {
     if (videoJuegos.isEmpty) return const Center(child: Text('Sin datos'));
 
-    final top = [...videoJuegos]
-      ..sort((a, b) => b.jugadoresActivos.compareTo(a.jugadoresActivos));
-
     final data = <Map<String, dynamic>>[
-      for (final j in top.take(25))
-        {'x': j.precio, 'y': j.puntaje, 'radio': j.jugadoresActivos},
+      for (final j in videoJuegos.take(40))
+        {
+          'x': j.precio,
+          'y': j.puntaje,
+          'z': j.horasJugadasMensuales,
+          'cat': j.esMundoAbierto ? 'Mundo abierto' : 'Lineal',
+        },
     ];
 
     return SizedBox(
@@ -29,17 +31,15 @@ class G15Burbujas extends StatelessWidget {
         variables: {
           'x': Variable(accessor: (Map m) => m['x'] as num),
           'y': Variable(accessor: (Map m) => m['y'] as num),
-          'radio': Variable(accessor: (Map m) => m['radio'] as num),
+          'z': Variable(accessor: (Map m) => m['z'] as num),
+          'cat': Variable(accessor: (Map m) => m['cat'] as String),
         },
         marks: [
           PointMark(
-            size: SizeEncode(variable: 'radio', values: [8, 24]),
+            size: SizeEncode(variable: 'z', values: [6, 18]),
             color: ColorEncode(
-              variable: 'radio',
-              values: const [
-                Color.fromARGB(255, 11, 77, 107),
-                Color.fromARGB(255, 110, 89, 232),
-              ],
+              variable: 'cat',
+              values: [Colors.purple, Colors.orange],
             ),
           ),
         ],

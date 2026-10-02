@@ -1,12 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:graficos/data/model/videojuego.dart';
 import 'package:graphic/graphic.dart';
 
-/// Valoraciones positivas y negativas apiladas por categoría (top 5).
-class G9BarrasApiladas extends StatelessWidget {
+/// Precio mínimo y máximo por categoría (top 5).
+class G21IntervaloBarras extends StatelessWidget {
   final List<VideoJuego> videoJuegos;
 
-  const G9BarrasApiladas({super.key, required this.videoJuegos});
+  const G21IntervaloBarras({super.key, required this.videoJuegos});
 
   @override
   Widget build(BuildContext context) {
@@ -24,40 +26,34 @@ class G9BarrasApiladas extends StatelessWidget {
 
     final data = <Map<String, dynamic>>[];
     for (final c in cats) {
-      final lista = videoJuegos.where((j) => j.categoria == c);
-      data.add({
-        'categoria': c,
-        'tipo': 'Positivas',
-        'v': lista.fold<int>(0, (a, j) => a + j.valoracionesPositivas),
-      });
-      data.add({
-        'categoria': c,
-        'tipo': 'Negativas',
-        'v': lista.fold<int>(0, (a, j) => a + j.valoracionesNegativas),
-      });
+      final precios =
+          videoJuegos.where((j) => j.categoria == c).map((j) => j.precio);
+      data.add({'x': c, 'val': precios.reduce(min), 'tipo': 'Mínimo'});
+      data.add({'x': c, 'val': precios.reduce(max), 'tipo': 'Máximo'});
     }
 
     return SizedBox(
       height: 300,
       child: Chart(
-        padding: (_) => const EdgeInsets.fromLTRB(60, 20, 20, 40),
+        padding: (_) => const EdgeInsets.fromLTRB(50, 20, 20, 40),
         data: data,
         variables: {
-          'categoria': Variable(accessor: (Map m) => m['categoria'] as String),
-          'tipo': Variable(accessor: (Map m) => m['tipo'] as String),
-          'v': Variable(
-            accessor: (Map m) => m['v'] as num,
+          'x': Variable(accessor: (Map m) => m['x'] as String),
+          'val': Variable(
+            accessor: (Map m) => m['val'] as num,
             scale: LinearScale(min: 0),
           ),
+          'tipo': Variable(accessor: (Map m) => m['tipo'] as String),
         },
         marks: [
           IntervalMark(
-            position: Varset('categoria') * Varset('v') / Varset('tipo'),
+            // "/ Varset('tipo')" agrupa para que Dodge ponga las barras lado a lado
+            position: Varset('x') * Varset('val') / Varset('tipo'),
+            modifiers: [DodgeModifier()],
             color: ColorEncode(
               variable: 'tipo',
-              values: [Colors.teal, Colors.indigo],
+              values: [Colors.orange.shade300, Colors.deepOrange],
             ),
-            modifiers: [StackModifier()],
           ),
         ],
         axes: [Defaults.horizontalAxis, Defaults.verticalAxis],

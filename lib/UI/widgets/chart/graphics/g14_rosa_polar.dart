@@ -1,30 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:graficos/data/model/videojuego.dart';
 import 'package:graphic/graphic.dart';
 
+/// Cantidad de videojuegos por plataforma (top 8).
 class G14RosaPolar extends StatelessWidget {
-  const G14RosaPolar({super.key});
+  final List<VideoJuego> videoJuegos;
+
+  const G14RosaPolar({super.key, required this.videoJuegos});
 
   @override
   Widget build(BuildContext context) {
-    final data = [
-      {'dir': 'Norte', 'fuerza': 40},
-      {'dir': 'Este', 'fuerza': 25},
-      {'dir': 'Sur', 'fuerza': 60},
-      {'dir': 'Oeste', 'fuerza': 30},
+    if (videoJuegos.isEmpty) return const Center(child: Text('Sin datos'));
+
+    final conteo = <String, int>{};
+    for (final j in videoJuegos) {
+      for (final p in j.plataformas) {
+        conteo[p] = (conteo[p] ?? 0) + 1;
+      }
+    }
+    final top = (conteo.entries.toList()
+          ..sort((a, b) => b.value.compareTo(a.value)))
+        .take(8)
+        .toList();
+
+    final data = <Map<String, dynamic>>[
+      for (final e in top) {'plataforma': e.key, 'cantidad': e.value},
     ];
 
-    return Chart(
-      data: data,
-      variables: {
-        'dir': Variable(accessor: (Map map) => map['dir'] as String),
-        'fuerza': Variable(accessor: (Map map) => map['fuerza'] as num),
-      },
-      coord: PolarCoord(),
-      marks: [
-        IntervalMark(
-          color: ColorEncode(variable: 'dir', values: Defaults.colors10),
-        ),
-      ],
+    return SizedBox(
+      height: 300,
+      child: Chart(
+        data: data,
+        variables: {
+          'plataforma': Variable(accessor: (Map m) => m['plataforma'] as String),
+          'cantidad': Variable(accessor: (Map m) => m['cantidad'] as num),
+        },
+        coord: PolarCoord(),
+        marks: [
+          IntervalMark(
+            color: ColorEncode(variable: 'plataforma', values: Defaults.colors10),
+          ),
+        ],
+      ),
     );
   }
 }

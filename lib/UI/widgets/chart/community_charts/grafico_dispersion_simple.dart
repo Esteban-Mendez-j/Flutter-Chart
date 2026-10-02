@@ -3,7 +3,7 @@ import 'package:community_charts_flutter/community_charts_flutter.dart'
 import 'package:flutter/material.dart';
 import 'package:graficos/data/model/videojuego.dart';
 
-/// 17. Gráfico de dispersión (scatter plot): relación entre precio y puntaje.
+/// 17. Gráfico de dispersión (scatter plot): Relacion entre precio y puntaje.
 class GraficoDispersionSimple extends StatelessWidget {
   final List<VideoJuego> videoJuegos;
 

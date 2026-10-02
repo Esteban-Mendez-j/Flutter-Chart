@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:graficos/data/model/videojuego.dart';
 import 'package:graphic/graphic.dart';
 
-/// Valoraciones positivas y negativas apiladas por categoría (top 5).
-class G9BarrasApiladas extends StatelessWidget {
+/// % de videojuegos de mundo abierto vs lineales por categoría (top 5).
+class G23BarrasPorcentaje100 extends StatelessWidget {
   final List<VideoJuego> videoJuegos;
 
-  const G9BarrasApiladas({super.key, required this.videoJuegos});
+  const G23BarrasPorcentaje100({super.key, required this.videoJuegos});
 
   @override
   Widget build(BuildContext context) {
@@ -24,40 +24,38 @@ class G9BarrasApiladas extends StatelessWidget {
 
     final data = <Map<String, dynamic>>[];
     for (final c in cats) {
-      final lista = videoJuegos.where((j) => j.categoria == c);
+      final total = conteo[c]!;
+      final abiertos =
+          videoJuegos.where((j) => j.categoria == c && j.esMundoAbierto).length;
+      data.add({'cat': c, 'pct': abiertos / total * 100, 'tipo': 'Mundo abierto'});
       data.add({
-        'categoria': c,
-        'tipo': 'Positivas',
-        'v': lista.fold<int>(0, (a, j) => a + j.valoracionesPositivas),
-      });
-      data.add({
-        'categoria': c,
-        'tipo': 'Negativas',
-        'v': lista.fold<int>(0, (a, j) => a + j.valoracionesNegativas),
+        'cat': c,
+        'pct': (total - abiertos) / total * 100,
+        'tipo': 'Lineal',
       });
     }
 
     return SizedBox(
       height: 300,
       child: Chart(
-        padding: (_) => const EdgeInsets.fromLTRB(60, 20, 20, 40),
+        padding: (_) => const EdgeInsets.fromLTRB(50, 20, 20, 40),
         data: data,
         variables: {
-          'categoria': Variable(accessor: (Map m) => m['categoria'] as String),
-          'tipo': Variable(accessor: (Map m) => m['tipo'] as String),
-          'v': Variable(
-            accessor: (Map m) => m['v'] as num,
-            scale: LinearScale(min: 0),
+          'cat': Variable(accessor: (Map m) => m['cat'] as String),
+          'pct': Variable(
+            accessor: (Map m) => m['pct'] as num,
+            scale: LinearScale(min: 0, max: 100),
           ),
+          'tipo': Variable(accessor: (Map m) => m['tipo'] as String),
         },
         marks: [
           IntervalMark(
-            position: Varset('categoria') * Varset('v') / Varset('tipo'),
+            position: Varset('cat') * Varset('pct') / Varset('tipo'),
+            modifiers: [StackModifier()],
             color: ColorEncode(
               variable: 'tipo',
-              values: [Colors.teal, Colors.indigo],
+              values: [Colors.blue, Colors.orange],
             ),
-            modifiers: [StackModifier()],
           ),
         ],
         axes: [Defaults.horizontalAxis, Defaults.verticalAxis],
