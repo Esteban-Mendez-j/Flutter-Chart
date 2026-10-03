@@ -4,11 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:graficos/data/model/historial_mensual.dart';
 import 'package:graficos/data/model/videojuego.dart';
 
-/// 4. Gráfico de barras agrupadas + apiladas: compara valoraciones
-/// positivas/negativas mes a mes entre dos videojuegos.
-///
-/// El truco de esta librería es "seriesCategory": las series que comparten
-/// la misma categoría se apilan juntas, y cada categoría forma un grupo.
 class GraficoBarrasAgrupadasApiladas extends StatelessWidget {
   final List<VideoJuego> videoJuegos;
 
@@ -27,6 +22,7 @@ class GraficoBarrasAgrupadasApiladas extends StatelessWidget {
         data: juegoA.historialMensual,
         colorFn: (_, _) => charts.MaterialPalette.green.shadeDefault,
       ),
+
       charts.Series<HistorialMensual, String>(
         id: '${juegoA.nombre} -',
         seriesCategory: juegoA.nombre,
@@ -35,6 +31,7 @@ class GraficoBarrasAgrupadasApiladas extends StatelessWidget {
         data: juegoA.historialMensual,
         colorFn: (_, _) => charts.MaterialPalette.red.shadeDefault,
       ),
+
       charts.Series<HistorialMensual, String>(
         id: '${juegoB.nombre} +',
         seriesCategory: juegoB.nombre,
@@ -43,6 +40,7 @@ class GraficoBarrasAgrupadasApiladas extends StatelessWidget {
         data: juegoB.historialMensual,
         colorFn: (_, _) => charts.MaterialPalette.blue.shadeDefault,
       ),
+
       charts.Series<HistorialMensual, String>(
         id: '${juegoB.nombre} -',
         seriesCategory: juegoB.nombre,
@@ -56,28 +54,43 @@ class GraficoBarrasAgrupadasApiladas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          'Valoraciones por mes: ${videoJuegos[0].nombre} vs ${videoJuegos[1].nombre}',
-          style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 10),
-        Expanded(
-          child: charts.BarChart(
-            _crearSeries(),
-            animate: true,
-            barGroupingType: charts.BarGroupingType.groupedStacked,
-            behaviors: [
-              charts.SeriesLegend(
-                position: charts.BehaviorPosition.bottom,
-                desiredMaxRows: 2,
-              ),
-            ],
+    if (videoJuegos.length < 2) {
+      return const Center(child: Text('Se necesitan al menos 2 videojuegos'));
+    }
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 8, 8, 4),
+      child: charts.BarChart(
+        _crearSeries(),
+        animate: true,
+
+        barGroupingType: charts.BarGroupingType.groupedStacked,
+
+        domainAxis: charts.OrdinalAxisSpec(
+          renderSpec: charts.SmallTickRendererSpec(
+            labelStyle: const charts.TextStyleSpec(fontSize: 9),
+            labelAnchor: charts.TickLabelAnchor.centered,
           ),
+
+          // Evita mostrar todos los meses
+          tickProviderSpec: charts.StaticOrdinalTickProviderSpec([
+            charts.TickSpec('2025-10', label: 'Oct'),
+            charts.TickSpec('2025-12', label: 'Dic'),
+            charts.TickSpec('2026-02', label: 'Feb'),
+            charts.TickSpec('2026-04', label: 'Abr'),
+            charts.TickSpec('2026-06', label: 'Jun'),
+            charts.TickSpec('2026-08', label: 'Ago'),
+          ]),
         ),
-      ],
+
+        behaviors: [
+          charts.SeriesLegend(
+            position: charts.BehaviorPosition.bottom,
+            desiredMaxRows: 2,
+            entryTextStyle: const charts.TextStyleSpec(fontSize: 9),
+          ),
+        ],
+      ),
     );
   }
 }

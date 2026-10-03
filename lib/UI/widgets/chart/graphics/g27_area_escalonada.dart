@@ -38,9 +38,7 @@ class G27AreaEscalonada extends StatelessWidget {
           ),
         },
         marks: [
-          AreaMark(
-            color: ColorEncode(value: Colors.cyan.withOpacity(0.5)),
-          ),
+          AreaMark(color: ColorEncode(value: Colors.cyan)),
           LineMark(
             shape: ShapeEncode(value: BasicLineShape(smooth: false)),
             color: ColorEncode(value: Colors.cyanAccent),

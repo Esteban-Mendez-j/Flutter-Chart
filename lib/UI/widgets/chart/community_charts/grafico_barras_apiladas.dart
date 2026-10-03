@@ -13,14 +13,14 @@ class GraficoBarrasApiladas extends StatelessWidget {
     return [
       charts.Series<VideoJuego, String>(
         id: 'Ingresos (M)',
-        domainFn: (VideoJuego juego, _) => juego.nombre,
+        domainFn: (VideoJuego juego, _) => juego.nombreCorto,
         measureFn: (VideoJuego juego, _) => juego.ingresosEstimados / 1000000,
         data: videoJuegos,
         colorFn: (_, _) => charts.MaterialPalette.cyan.shadeDefault,
       ),
       charts.Series<VideoJuego, String>(
         id: 'Costo desarrollo (M)',
-        domainFn: (VideoJuego juego, _) => juego.nombre,
+        domainFn: (VideoJuego juego, _) => juego.nombreCorto,
         measureFn: (VideoJuego juego, _) => juego.costoDesarrollo / 1000000,
         data: videoJuegos,
         colorFn: (_, _) => charts.MaterialPalette.deepOrange.shadeDefault,

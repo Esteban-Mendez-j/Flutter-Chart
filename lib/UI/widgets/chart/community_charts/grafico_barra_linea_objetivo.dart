@@ -14,14 +14,14 @@ class GraficoBarraLineaObjetivo extends StatelessWidget {
     return [
       charts.Series<VideoJuego, String>(
         id: 'Puntaje',
-        domainFn: (VideoJuego juego, _) => juego.nombre,
+        domainFn: (VideoJuego juego, _) => juego.nombreCorto,
         measureFn: (VideoJuego juego, _) => juego.puntaje,
         data: videoJuegos,
         colorFn: (_, _) => charts.MaterialPalette.blue.shadeDefault,
       ),
       charts.Series<VideoJuego, String>(
         id: 'Objetivo (8.5)',
-        domainFn: (VideoJuego juego, _) => juego.nombre,
+        domainFn: (VideoJuego juego, _) => juego.nombreCorto,
         measureFn: (_, _) => 8.5,
         data: videoJuegos,
         colorFn: (_, _) => charts.MaterialPalette.red.shadeDefault,

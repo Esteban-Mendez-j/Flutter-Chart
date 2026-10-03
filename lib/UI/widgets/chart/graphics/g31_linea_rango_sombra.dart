@@ -58,7 +58,7 @@ class G31LineaRangoSombra extends StatelessWidget {
         marks: [
           AreaMark(
             position: Varset('t') * (Varset('min') + Varset('max')),
-            color: ColorEncode(value: Colors.lightGreen.withOpacity(0.4)),
+            color: ColorEncode(value: Colors.lightGreen),
           ),
           LineMark(
             position: Varset('t') * Varset('media'),

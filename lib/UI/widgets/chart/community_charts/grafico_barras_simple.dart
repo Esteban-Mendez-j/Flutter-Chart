@@ -13,7 +13,7 @@ class GraficoBarrasSimple extends StatelessWidget {
     return [
       charts.Series<VideoJuego, String>(
         id: 'Puntaje',
-        domainFn: (VideoJuego juego, _) => juego.nombre,
+        domainFn: (VideoJuego juego, _) => juego.nombreCorto,
         measureFn: (VideoJuego juego, _) => juego.puntaje,
         data: videoJuegos,
         colorFn: (_, _) => charts.MaterialPalette.blue.shadeDefault,

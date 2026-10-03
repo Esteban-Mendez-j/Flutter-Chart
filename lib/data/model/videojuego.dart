@@ -66,4 +66,12 @@ class VideoJuego {
       _$VideoJuegoFromJson(json);
 
   Map<String, dynamic> toJson() => _$VideoJuegoToJson(this);
+
+  String get nombreCorto {
+    if (nombre.length <= 10) {
+      return nombre;
+    }
+
+    return '${nombre.substring(0, 10)}...';
+  }
 }

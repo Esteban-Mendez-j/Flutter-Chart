@@ -38,12 +38,23 @@ class GraficoCircularSimple extends StatelessWidget {
           style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
+
         const SizedBox(height: 10),
+
         Expanded(
           child: charts.PieChart<String>(
             _crearSeries(),
             animate: true,
-            behaviors: [charts.DatumLegend()],
+
+            behaviors: [
+              charts.DatumLegend(
+                position: charts.BehaviorPosition.bottom,
+                horizontalFirst: false,
+                desiredMaxRows: 3,
+                cellPadding: const EdgeInsets.only(right: 8, bottom: 4),
+                entryTextStyle: const charts.TextStyleSpec(fontSize: 10),
+              ),
+            ],
           ),
         ),
       ],

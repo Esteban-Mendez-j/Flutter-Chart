@@ -4,10 +4,10 @@ import 'package:graphic/graphic.dart';
 
 /// Embudo: totales de ventas, jugadores activos y valoraciones positivas,
 /// ordenados de mayor a menor.
-class G29Grafico_Embudo extends StatelessWidget {
+class G29GraficoEmbudo extends StatelessWidget {
   final List<VideoJuego> videoJuegos;
 
-  const G29Grafico_Embudo({super.key, required this.videoJuegos});
+  const G29GraficoEmbudo({super.key, required this.videoJuegos});
 
   @override
   Widget build(BuildContext context) {
@@ -39,16 +39,16 @@ class G29Grafico_Embudo extends StatelessWidget {
           IntervalMark(
             position: Varset('etapa') * Varset('n'),
             size: SizeEncode(value: 44),
-            color: ColorEncode(
-              variable: 'etapa',
-              values: Defaults.colors10,
-            ),
+            color: ColorEncode(variable: 'etapa', values: Defaults.colors10),
             modifiers: [SymmetricModifier()],
             label: LabelEncode(
               encoder: (tuple) => Label(
                 '${tuple['n']}',
                 LabelStyle(
-                  textStyle: const TextStyle(fontSize: 12, color: Colors.black87),
+                  textStyle: const TextStyle(
+                    fontSize: 12,
+                    color: Colors.black87,
+                  ),
                 ),
               ),
             ),

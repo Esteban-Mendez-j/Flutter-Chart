@@ -16,14 +16,14 @@ class GraficoBarrasHorizontalesAgrupadas extends StatelessWidget {
     return [
       charts.Series<VideoJuego, String>(
         id: 'Ventas (M)',
-        domainFn: (VideoJuego juego, _) => juego.nombre,
+        domainFn: (VideoJuego juego, _) => juego.nombreCorto,
         measureFn: (VideoJuego juego, _) => juego.numeroVentas / 1000000,
         data: videoJuegos,
         colorFn: (_, _) => charts.MaterialPalette.indigo.shadeDefault,
       ),
       charts.Series<VideoJuego, String>(
         id: 'Jugadores activos (M)',
-        domainFn: (VideoJuego juego, _) => juego.nombre,
+        domainFn: (VideoJuego juego, _) => juego.nombreCorto,
         measureFn: (VideoJuego juego, _) => juego.jugadoresActivos / 1000000,
         data: videoJuegos,
         colorFn: (_, _) => charts.MaterialPalette.lime.shadeDefault,

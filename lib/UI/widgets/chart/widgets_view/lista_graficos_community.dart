@@ -1,7 +1,7 @@
 import 'package:graficos/UI/view_model/graficos_view_model.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_apilado_lineas.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_barra_agrupado_horizontal.dart';
 import 'package:graficos/data/model/grafico_item.dart';
-import 'package:graficos/UI/widgets/chart/community_charts/grafico_barra_chispa.dart';
-import 'package:graficos/UI/widgets/chart/community_charts/grafico_barra_horizontal.dart';
 import 'package:graficos/UI/widgets/chart/community_charts/grafico_barra_horizontal_etiquetas.dart';
 import 'package:graficos/UI/widgets/chart/community_charts/grafico_barra_linea_objetivo.dart';
 import 'package:graficos/UI/widgets/chart/community_charts/grafico_barras_agrupadas.dart';
@@ -31,20 +31,19 @@ import 'package:graficos/UI/widgets/chart/community_charts/grafico_barras_apilad
 import 'package:graficos/UI/widgets/chart/community_charts/grafico_linea_anotacion_rango.dart';
 import 'package:graficos/UI/widgets/chart/community_charts/grafico_series_tiempo_seleccion.dart';
 import 'package:graficos/UI/widgets/chart/community_charts/grafico_dispersion_tendencia.dart';
-import 'package:graficos/UI/widgets/chart/community_charts/grafico_barras_doble_eje.dart';
+import 'package:graficos/UI/widgets/chart/community_charts/grafico_combo_barra_agrupada_linea_horizontal.dart';
 
 List<GraficoItem> listaGraficosCommunity({
   required GraficosViewModel viewModel,
 }) {
   final games = viewModel.videoJuegos;
   final fiveGame = games.take(5).toList();
-  final eightGame = games.take(8).toList();
 
   return [
     // --- Barras (9) ---
 
     GraficoItem(
-      grafico: GraficoBarrasSimple(videoJuegos: eightGame),
+      grafico: GraficoBarrasSimple(videoJuegos: fiveGame),
       titulo: "Grafico de barras simple",
       categoria: "Comparacion",
       descripcion: "El grafico de barras simple sirve para comparar los valores de diferentes elementos mediante barras, permitiendo identificar facilmente las diferencias entre ellos.",
@@ -76,14 +75,6 @@ List<GraficoItem> listaGraficosCommunity({
     ),
 
     GraficoItem(
-      grafico: GraficoBarraHorizontal(videoJuegos: fiveGame),
-      titulo: "Grafico de barras horizontal",
-      categoria: "Comparacion",
-      descripcion: "El grafico de barras horizontal permite comparar valores mediante barras horizontales y facilita la lectura cuando las categorias tienen nombres largos.",
-      tituloVisible: false,
-    ),
-
-    GraficoItem(
       grafico: GraficoBarraHorizontalEtiquetas(videoJuegos: fiveGame),
       titulo: "Barras horizontales con etiquetas",
       categoria: "Comparacion",
@@ -100,15 +91,15 @@ List<GraficoItem> listaGraficosCommunity({
     ),
 
     GraficoItem(
-      grafico: GraficoBarraChispa(videoJuegos: games),
-      titulo: "Grafico de barras tipo chispa",
-      categoria: "Tendencia",
-      descripcion: "El grafico de barras tipo chispa permite representar de forma compacta pequeñas variaciones o tendencias en los datos ocupando poco espacio visual.",
+      grafico: GraficoBarrasApiladasAgrupadasHorizontal(videoJuegos: fiveGame),
+      titulo: "Barras apiladas y agrupadas",
+      categoria: "Comparación",
+      descripcion: "Compara ventas y jugadores activos mediante grupos de barras, divididos en segmentos apilados.",
       tituloVisible: false,
     ),
 
     GraficoItem(
-      grafico: GraficoBarraLineaObjetivo(videoJuegos: eightGame),
+      grafico: GraficoBarraLineaObjetivo(videoJuegos: fiveGame),
       titulo: "Grafico de barras con linea objetivo",
       categoria: "Rendimiento",
       descripcion: "El grafico de barras con linea objetivo permite comparar los valores obtenidos con un valor de referencia o meta para identificar qué elementos alcanzan o superan el objetivo.",
@@ -201,7 +192,8 @@ List<GraficoItem> listaGraficosCommunity({
 
     // --- Combo (1) ---
     GraficoItem(
-      grafico: GraficoComboBarraLinea(videoJuegos: games),
+      //Revisar la linea no se ve bien
+      grafico: GraficoComboBarraLinea(videoJuegos: fiveGame),
       titulo: "Grafico combinado de barras y lineas",
       categoria: "Comparacion",
       descripcion: "El grafico combinado de barras y lineas permite representar dos tipos de informacion en un mismo grafico, facilitando la comparacion entre valores y tendencias.",
@@ -242,7 +234,7 @@ List<GraficoItem> listaGraficosCommunity({
     ),
 
     GraficoItem(
-      grafico: GraficoBarrasPositivasNegativas(videoJuegos: eightGame),
+      grafico: GraficoBarrasPositivasNegativas(videoJuegos: fiveGame),
       titulo: "Grafico de barras positivas y negativas",
       categoria: "Comparacion",
       descripcion: "El grafico de barras positivas y negativas muestra desviaciones respecto a una referencia, diferenciando con color los valores que quedan por encima y por debajo.",
@@ -298,10 +290,18 @@ List<GraficoItem> listaGraficosCommunity({
     ),
 
     GraficoItem(
-      grafico: GraficoBarrasDobleEje(videoJuegos: fiveGame),
-      titulo: "Grafico de barras con doble eje",
-      categoria: "Comparacion",
-      descripcion: "El grafico de barras con doble eje compara dos medidas de escalas muy distintas usando un eje vertical a cada lado.",
+      grafico: GraficoBarrasAgrupadasLinea(videojuego: games.first),
+      titulo: "Gráfico de barras agrupada con línea horizontal",
+      categoria: "Comparación",
+      descripcion: "El gráfico combina barras agrupadas y una línea para comparar dos medidas de cada videojuego y observar sus diferencias y tendencias.",
+      tituloVisible: false,
+    ),
+
+    GraficoItem(
+      grafico: GraficoBarrasApiladasLinea(videojuego: fiveGame[0]),
+      titulo: "Barras apiladas y línea",
+      categoria: "Comparación",
+      descripcion: "Compara mensualmente las valoraciones positivas y negativas mediante barras apiladas y muestra la evolución de los jugadores activos mediante una línea.",
       tituloVisible: false,
     ),
   ];

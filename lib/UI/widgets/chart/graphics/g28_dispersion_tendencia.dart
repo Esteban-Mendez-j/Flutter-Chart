@@ -5,10 +5,10 @@ import 'package:graficos/data/model/videojuego.dart';
 import 'package:graphic/graphic.dart';
 
 /// Dispersión: duración promedio (horas) vs puntaje, con línea de tendencia.
-class G28Dispersion_Tendencia extends StatelessWidget {
+class G28DispersionTendencia extends StatelessWidget {
   final List<VideoJuego> videoJuegos;
 
-  const G28Dispersion_Tendencia({super.key, required this.videoJuegos});
+  const G28DispersionTendencia({super.key, required this.videoJuegos});
 
   @override
   Widget build(BuildContext context) {

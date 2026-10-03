@@ -36,11 +36,8 @@ import 'package:graficos/data/model/grafico_item.dart';
 
 /// Ahora recibe los datos (ya no puede ser `const`, porque cada gráfica
 /// depende de la lista de videojuegos).
-List<GraficoItem> listaGraficosGraphic({
-  required GraficosViewModel viewModel,
-}) {
+List<GraficoItem> listaGraficosGraphic({required GraficosViewModel viewModel}) {
   final games = viewModel.videoJuegos;
-  
 
   return [
     GraficoItem(
@@ -74,7 +71,7 @@ List<GraficoItem> listaGraficosGraphic({
       descripcion: "El grafico de area simple permite representar la evolución de una variable y resaltar visualmente la magnitud de los valores mediante el area situada debajo de la linea.",
     ),
     GraficoItem(
-      grafico: G6CircularPie(videoJuegos: games ),
+      grafico: G6CircularPie(videoJuegos: games),
       titulo: "6. Circular (Pie)",
       categoria: "Composición",
       descripcion: "El grafico circular permite mostrar cómo se divide un total entre diferentes categorias mediante segmentos que representan la proporción de cada una.",
@@ -207,13 +204,13 @@ List<GraficoItem> listaGraficosGraphic({
       descripcion: "Muestra acumulados en intervalos discretos mediante cambios bruscos entre niveles horizontales.",
     ),
     GraficoItem(
-      grafico: G28Dispersion_Tendencia(videoJuegos: games),
+      grafico: G28DispersionTendencia(videoJuegos: games),
       titulo: "28. Dispersión con línea de tendencia",
       categoria: "Relacion",
       descripcion: "Visualiza la Relacion entre dos variables con puntos y una línea de tendencia resultante de regresión lineal.",
     ),
     GraficoItem(
-      grafico: G29Grafico_Embudo(videoJuegos: games),
+      grafico: G29GraficoEmbudo(videoJuegos: games),
       titulo: "29. Embudo",
       categoria: "Composición",
       descripcion: "Muestra la evolución de una variable a través de distintas etapas, representando la pérdida o ganancia de valores.",
